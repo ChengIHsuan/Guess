@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -15,31 +16,27 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
     }
 
-    public void guess(View view){
-        int ans = (int) (Math.random()*10+1);
+    int ans = (int) (Math.random() * 10 + 1);
+
+    public void guess(View view) {
+
         EditText edNum = (EditText) findViewById(R.id.ed_number);
         float num = Float.parseFloat(edNum.getText().toString());
 
-        if (num == ans){
-            new AlertDialog.Builder(this)
-                    .setMessage(ans+"答對了!!")
-                    .setNeutralButton("關閉", null)
-                    .show();
-        }else{
-            if (num > ans){
-                new AlertDialog.Builder(this)
-                        .setMessage(ans+"小一點")
-                        .setNeutralButton("關閉", null)
-                        .show();
+        if (num > 0 & num <= 10) {
+            if (num > ans) {
+                TextView tv1 = (TextView) findViewById(R.id.tv_message);
+                tv1.setText("小一點");
+            } else if (num < ans) {
+                TextView tv2 = (TextView) findViewById(R.id.tv_message);
+                tv2.setText("大一點");
+            } else if (num == ans) {
+                TextView tv1 = (TextView) findViewById(R.id.tv_message);
+                tv1.setText("答對了");
             }
-            if (num < ans){
-                new AlertDialog.Builder(this)
-                        .setMessage(ans+"大一點")
-                        .setNeutralButton("關閉", null)
-                        .show();
-            }
-            
+        } else {
+            TextView tv1 = (TextView) findViewById(R.id.tv_message);
+            tv1.setText("輸入錯誤");
         }
     }
-
 }
