@@ -23,12 +23,14 @@ public class MainActivity extends AppCompatActivity {
         int num = Integer.parseInt((edNum.getText().toString()));
         String stNum = edNum.getText().toString();
 
-        TextView tvMax = (TextView) findViewById(R.id.tv_max);
 
-        if (num > 0 & num <= 100) {
+
+
+        if (num >= 0 & num <= 100) {
             if (num > ans) {
-
+                TextView tvMax = (TextView) findViewById(R.id.tv_max);
                 tvMax.setText(stNum);
+                
                 //Toast.makeText(MainActivity.this, "小一點" , Toast.LENGTH_SHORT).show();
 
                 /*TextView tv1 = (TextView) findViewById(R.id.tv_message);
@@ -36,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
             } else if (num < ans) {
                 TextView tvMin = (TextView) findViewById(R.id.tv_min);
                 tvMin.setText(stNum);
+
                 //Toast.makeText(MainActivity.this, "大一點" , Toast.LENGTH_SHORT).show();
 
                 /*TextView tv2 = (TextView) findViewById(R.id.tv_message);
