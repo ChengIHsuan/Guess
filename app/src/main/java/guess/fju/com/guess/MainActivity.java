@@ -1,5 +1,6 @@
 package guess.fju.com.guess;
 
+import android.content.DialogInterface;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -23,43 +24,28 @@ public class MainActivity extends AppCompatActivity {
         int num = Integer.parseInt((edNum.getText().toString()));
         String stNum = edNum.getText().toString();
 
+        TextView tvMax = (TextView) findViewById(R.id.tv_max);
+        TextView tvMin = (TextView) findViewById(R.id.tv_min);
+        int iMax = Integer.parseInt(tvMax.getText().toString());
+        int iMin = Integer.parseInt(tvMin.getText().toString());
 
-
-
-        if (num >= 0 & num <= 100) {
+        if (num >= iMin & num <= iMax) {
             if (num > ans) {
-                TextView tvMax = (TextView) findViewById(R.id.tv_max);
                 tvMax.setText(stNum);
-                
-                //Toast.makeText(MainActivity.this, "小一點" , Toast.LENGTH_SHORT).show();
-
-                /*TextView tv1 = (TextView) findViewById(R.id.tv_message);
-                 tv1.setText("小一點");*/
+                iMax = num;
             } else if (num < ans) {
-                TextView tvMin = (TextView) findViewById(R.id.tv_min);
                 tvMin.setText(stNum);
-
-                //Toast.makeText(MainActivity.this, "大一點" , Toast.LENGTH_SHORT).show();
-
-                /*TextView tv2 = (TextView) findViewById(R.id.tv_message);
-                tv2.setText("大一點");*/
+                iMin = num;
             } else if (num == ans) {
                 new AlertDialog.Builder(this)
-                        .setMessage("答對了!!!")
-                        .setPositiveButton("OK", null)
+                        .setMessage(R.string.correct)
+                        .setNegativeButton("關閉", null)
                         .show();
-                /*new AlertDialog.Builder(this)
-                        .setMessage("答對了!!!")
-                        .setPositiveButton("再玩一次", null)
-                        .show();
-                edNum.setText("");*/
-
-                /*TextView tv1 = (TextView) findViewById(R.id.tv_message);
-                tv1.setText("答對了");*/
             }
         } else {
-            TextView tv1 = (TextView) findViewById(R.id.tv_message);
-            tv1.setText("輸入錯誤");
+            TextView tv = (TextView) findViewById(R.id.tv_message);
+            tv.setText(R.string.error);
         }
     }
+
 }
