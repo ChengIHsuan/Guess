@@ -23,16 +23,25 @@ public class MainActivity extends AppCompatActivity {
         EditText edNum = (EditText) findViewById(R.id.ed_number);
         float num = Float.parseFloat(edNum.getText().toString());
 
+
         if (num > 0 & num <= 10) {
             if (num > ans) {
-                TextView tv1 = (TextView) findViewById(R.id.tv_message);
-                tv1.setText("小一點");
+                Toast.makeText(MainActivity.this, "小一點" , Toast.LENGTH_SHORT).show();
+                //TextView tv1 = (TextView) findViewById(R.id.tv_message);
+                //tv1.setText("小一點");
             } else if (num < ans) {
-                TextView tv2 = (TextView) findViewById(R.id.tv_message);
-                tv2.setText("大一點");
+                Toast.makeText(MainActivity.this, "大一點" , Toast.LENGTH_SHORT).show();
+                //TextView tv2 = (TextView) findViewById(R.id.tv_message);
+                //tv2.setText("大一點");
             } else if (num == ans) {
-                TextView tv1 = (TextView) findViewById(R.id.tv_message);
-                tv1.setText("答對了");
+                new AlertDialog.Builder(this)
+                        .setMessage("答對了!!!")
+                        .setPositiveButton("再玩一次", null)
+                        .show();
+                edNum.setText("");
+                
+                //TextView tv1 = (TextView) findViewById(R.id.tv_message);
+                //tv1.setText("答對了");
             }
         } else {
             TextView tv1 = (TextView) findViewById(R.id.tv_message);
