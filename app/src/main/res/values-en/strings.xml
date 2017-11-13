@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="correct">BINGO!!!</string>
+    <string name="guess">Guess</string>
+    <string name="INFO">Enter a number in the range</string>
+    <string name="app_name">Guess</string>
+    <string name="input">Please enter a number</string>
+    <string name="ok">OK</string>
+    <string name="range_max">100</string>
+    <string name="range_min">1</string>
+    <string name="error_1">Please enter the number between</string>
+    <string name="error_2">.</string>
+</resources>

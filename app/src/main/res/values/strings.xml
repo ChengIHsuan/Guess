@@ -2,9 +2,12 @@
     <string name="app_name">Guess</string>
     <string name="correct">答對了!!!</string>
     <string name="ok">OK</string>
-    <string name="error">輸入錯誤</string>
     <string name="input">請輸入數字</string>
     <string name="guess">Guess</string>
     <string name="range_min">1</string>
     <string name="range_max">100</string>
+    <string name="INFO">輸入一個在範圍內的數字</string>
+    <string name="error_1">請輸入</string>
+    <string name="error_2">之間的數字</string>
+
 </resources>

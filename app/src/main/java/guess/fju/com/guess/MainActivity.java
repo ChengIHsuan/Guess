@@ -5,6 +5,7 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -15,6 +16,17 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        Button bInfo = (Button) findViewById(R.id.b_info);
+        bInfo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                new AlertDialog.Builder(MainActivity.this)
+                        .setMessage(R.string.INFO)
+                        .setPositiveButton("OK", null)
+                        .show();
+            }
+        }
+        );
     }
 
     int ans = (int) (Math.random() * 100 + 1);
@@ -29,13 +41,11 @@ public class MainActivity extends AppCompatActivity {
         int iMax = Integer.parseInt(tvMax.getText().toString());
         int iMin = Integer.parseInt(tvMin.getText().toString());
 
-        if (num >= iMin & num <= iMax) {
+        if (num > iMin & num < iMax) {
             if (num > ans) {
                 tvMax.setText(stNum);
-                iMax = num;
             } else if (num < ans) {
                 tvMin.setText(stNum);
-                iMin = num;
             } else if (num == ans) {
                 new AlertDialog.Builder(this)
                         .setMessage(R.string.correct)
@@ -43,8 +53,7 @@ public class MainActivity extends AppCompatActivity {
                         .show();
             }
         } else {
-            TextView tv = (TextView) findViewById(R.id.tv_message);
-            tv.setText(R.string.error);
+            Toast.makeText(MainActivity.this, getString(R.string.error_1) + iMin + "~" + iMax + getString(R.string.error_2), Toast.LENGTH_SHORT).show();
         }
     }
 
